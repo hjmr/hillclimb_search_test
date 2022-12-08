@@ -3,10 +3,11 @@ from abc import ABC
 import numpy as np
 import random
 from simpleai.search import SearchProblem, hill_climbing
-from gensim.models import Word2Vec
+from gensim.models import KeyedVectors
 
-model = Word2Vec.load("latest-ja-word2vec-gensim-model/word2vec.gensim.model")
-vector = model.wv["Python"]
-sims = model.wv.similar_by_vector(vector)
+vectors = KeyedVectors.load("../chive-1.2-mc5_gensim/chive-1.2-mc5.kv")
+
+query_vector = vectors["python"]
+sims   = vectors.similar_by_vector(query_vector)
 
 print(sims)

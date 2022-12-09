@@ -1,10 +1,9 @@
 [tool.poetry]
-name = "hillclimb-search-test"
+name = "hcsearch-test"
 version = "0.1.0"
 description = ""
 authors = ["hjmr <2620990+hjmr@users.noreply.github.com>"]
 readme = "README.md"
-packages = [{include = "hillclimb_search_test"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"

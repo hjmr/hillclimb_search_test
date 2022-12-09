@@ -12,6 +12,9 @@ gensim = "^4.2.0"
 simpleai = "^0.8.3"
 
 
+[tool.poetry.group.dev.dependencies]
+black = "^22.10.0"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

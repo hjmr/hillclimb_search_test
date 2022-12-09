@@ -40,11 +40,13 @@ class QuerySearchProblem(SearchProblem):
         curr_vector = vectors[curr_query]
         d = curr_vector - target_vector
         v = 1.0 / (1.0 + np.linalg.norm(d))
+        print(f"query = {curr_query}, value={v}")
         return v
 
 
 initial_query = "Java"
 problem = QuerySearchProblem(initial_state=initial_query)
 result = simulated_annealing(problem, iterations_limit=100, viewer=ConsoleViewer())
+# result = hill_climbing(problem, iterations_limit=100, viewer=ConsoleViewer())
 
 print(result.path())

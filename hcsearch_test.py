@@ -23,8 +23,8 @@ class QuerySearchProblem(SearchProblem):
             new_vector = curr_vector + np.random.standard_normal(curr_vector.size)
             new_keywords = vectors.similar_by_vector(new_vector)
             for k, _ in new_keywords:
-                # 現在の query と異なる単語を候補にする
-                if k != curr_query:
+                # 現在のqueryと異なり，かつすでにクエリ候補に入っていない単語をクエリ候補とする
+                if k != curr_query and k not in actions:
                     actions.append(k)
                     break
         return actions

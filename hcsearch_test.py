@@ -7,7 +7,7 @@ from gensim.models import KeyedVectors
 
 NUM_CANDIDATES = 5  # 一度に探索する単語の数
 
-vectors = KeyedVectors.load("../chive-1.2-mc5_gensim/chive-1.2-mc5.kv")
+vectors = KeyedVectors.load("../chive-1.2-mc30_gensim/chive-1.2-mc30.kv")
 
 target = "python"
 target_vector = vectors[target]

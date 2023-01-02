@@ -34,7 +34,7 @@ class QuerySearchProblem(SearchProblem):
 
     def mutate(self, query):
         vec = vectors[query]
-        new_vec = vec + np.random.standard_normal(size=vec.size)
+        new_vec = vec + np.random.uniform(low=-1.0, high=1.0, size=vec.size)
         candidates = vectors.similar_by_vector(new_vec, topn=10)
         new_query = None
         for q, _ in candidates:
@@ -45,13 +45,13 @@ class QuerySearchProblem(SearchProblem):
         return new_query
 
     # 状態の価値を計算
-    # ここではベクトルの差（ノルム）の逆数を価値としている
+    # ここではベクトルの差（ノルム）の自乗の逆数を価値としている
     def value(self, curr_query):
         v = 0
         try:
             curr_vector = vectors[curr_query]
-            d = curr_vector - target_vector
-            v = 100.0 / (1.0 + np.linalg.norm(d))
+            d = np.linalg.norm(curr_vector - target_vector) ** 2
+            v = 100.0 / (1.0 + d)
         except Exception as e:
             print(e)
             print(curr_query)
@@ -60,6 +60,12 @@ class QuerySearchProblem(SearchProblem):
 
 problem = QuerySearchProblem()
 # result = simulated_annealing(problem, iterations_limit=100, viewer=ConsoleViewer())
-result = genetic(problem, population_size=100, mutation_chance=0.1, iterations_limit=100, viewer=ConsoleViewer())
-
+result = genetic(
+    problem,
+    population_size=1000,
+    crossover_rate=0.8,
+    mutation_chance=0.1,
+    iterations_limit=100,
+    viewer=ConsoleViewer(),
+)
 print(result.state, result.path())

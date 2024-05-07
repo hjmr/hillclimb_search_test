@@ -5,12 +5,13 @@ from simpleai.search.local import genetic
 from simpleai.search.viewers import ConsoleViewer
 from gensim.models import KeyedVectors
 
-vectors: KeyedVectors = KeyedVectors.load("../chive-1.2-mc30_gensim/chive-1.2-mc30.kv")
+# vectors: KeyedVectors = KeyedVectors.load("../chive-1.2-mc30_gensim/chive-1.2-mc30.kv")
+vectors: KeyedVectors = KeyedVectors.load_word2vec_format("../enwiki_20180420_300d.txt", binary=False)
 
-start = "若手"
+start = "research"
 start_vector = vectors[start]
 
-target = "クリスマス"
+target = "christmas"
 target_vector = vectors[target]
 
 

@@ -3,7 +3,7 @@ from simpleai.search.traditional import astar
 from simpleai.search.local import hill_climbing, simulated_annealing
 from simpleai.search.viewers import ConsoleViewer
 
-GOAL = "HELLO WORLD"
+GOAL = "HELLO WORLD!"
 
 
 class HelloProblem(SearchProblem):
